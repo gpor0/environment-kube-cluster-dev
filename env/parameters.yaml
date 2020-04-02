@@ -1,0 +1,15 @@
+adminUser:
+  password: local:kube-cluster/adminUser:password
+  username: admin
+docker:
+  email: gpor@icloud.com
+  password: local:kube-cluster/docker:password
+  url: https://hub.docker.com/repository/docker/gpor89
+  username: gpor89
+enableDocker: true
+pipelineUser:
+  email: gp3964@student.uni-lj.si
+  token: local:kube-cluster/pipelineUser:token
+  username: genie-do
+prow:
+  hmacToken: local:kube-cluster/prow:hmacToken

@@ -1,25 +1,67 @@
+autoUpdate:
+  enabled: false
+  schedule: ""
+bootConfigURL: https://github.com/gpor0/environment-kube-cluster-dev
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: false
-  project: ""
+  clusterName: kube-cluster
+  devEnvApprovers:
+  - gpor0
+  environmentGitOwner: gpor0
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: tidy-shard-273016
   provider: gke
-  zone: ""
-gitops: true
+  registry: https://hub.docker.com/repository/docker/gpor89
+  zone: europe-west3-b
 environments:
-- key: dev
-- key: staging
-- key: production
+- ingress:
+    domain: 35.246.207.160.nip.io
+    externalDNS: false
+    namespaceSubDomain: -jx.
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: dev
+  repository: environment-kube-cluster-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-kube-cluster-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-kube-cluster-production
+gitops: true
 ingress:
-  domain: ""
+  domain: 35.246.207.160.nip.io
   externalDNS: false
+  namespaceSubDomain: -jx.
   tls:
     email: ""
     enabled: false
     production: false
 kaniko: true
+repository: nexus
 secretStorage: local
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: false
     url: ""
@@ -29,7 +71,11 @@ storage:
   repository:
     enabled: false
     url: ""
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: "master"
+  ref: v1.0.409
   url: https://github.com/jenkins-x/jenkins-x-versions.git
 webhook: prow
